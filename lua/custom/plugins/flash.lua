@@ -2,10 +2,21 @@ return {
   'folke/flash.nvim',
   event = 'VeryLazy',
   ---@type Flash.Config
-  opts = {},
+  opts = {
+    modes = {
+      char = {
+        enabled = true,
+        -- by default all keymaps are enabled, but you can disable some of them,
+        -- by removing them from the list.
+        -- If you rather use another key, you can map them
+        -- to something else, e.g., { [";"] = "L", [","] = H }
+        keys = { 'f', 'F', ';', ',' },
+      },
+    },
+  },
   keys = {
     {
-      's',
+      'ts',
       mode = { 'n', 'x', 'o' },
       function()
         require('flash').jump()
@@ -13,7 +24,7 @@ return {
       desc = 'Flash',
     },
     {
-      'S',
+      'tS',
       mode = { 'n', 'x', 'o' },
       function()
         require('flash').treesitter()
